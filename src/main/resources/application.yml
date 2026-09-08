@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 25MB
+      max-request-size: 25MB
+  application:
+    name: underwater-image-enhancer
+
+logging:
+  level:
+    root: INFO
+    com.uie.enhancer: DEBUG
+
+# Custom application properties
+uie:
+  ai:
+    # Set to true once you have placed a real ONNX model at model-path.
+    enabled: false
+    model-path: models/funie-gan.onnx
+    # Expected square input size the ONNX model was trained/exported with.
+    input-size: 256
+  classical:
+    default-clip-limit: 3.0
+    default-tile-grid: 8
+    default-gamma: 0.85
+    default-red-alpha: 1.0
+    default-sharpen-amount: 0.6
